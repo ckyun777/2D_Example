@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a79abc50aa42454c9fd34d85c9051ca, type: 3}
-  m_Name: AB Level2
+  m_Name: AB Level4
   m_EditorClassIdentifier: 
-  levelName: "\uACC4\uACE1 2"
-  numOfPlayer: 0
-  damage: 2
-  sightRange: 2
-  moveSpeed: 2
+  levelName: 3
+  hp: 3
+  damage: 3
+  sightRange: 3
+  moveSpeed: 3

@@ -5,32 +5,30 @@
 
 public class ABLevel : ScriptableObject
 {
-   [SerializeField]
-
-   private string levelName;
-
+   [SerializeField] private string levelName;
    public string LevelName { get { return levelName; } }
 
-   [SerializeField]
 
-   private int hp;
+   [SerializeField] private AudioClip levelBGM;
+   public AudioClip LevelBGM { get { return levelBGM; } }
 
-   public int Hp { get { return hp; } }
 
-   [SerializeField]
 
-   private int damage;
+
+   [SerializeField] private int numOfPlayer;
+
+   public int NumOfPlayer { get { return numOfPlayer; } }
+
+   [SerializeField] private int damage;
 
    public int Damage { get { return damage; } }
 
    [SerializeField]
-
    private float sightRange;
 
    public float SightRange { get { return sightRange; } }
 
    [SerializeField]
-
    private float moveSpeed;
 
    public float MoveSpeed { get { return moveSpeed; } }

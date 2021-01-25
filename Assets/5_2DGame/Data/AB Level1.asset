@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a79abc50aa42454c9fd34d85c9051ca, type: 3}
   m_Name: AB Level1
   m_EditorClassIdentifier: 
-  levelName: 1
-  hp: 1
+  levelName: "\uACC4\uACE1 1"
+  numOfPlayer: 0
   damage: 1
   sightRange: 1
   moveSpeed: 1
