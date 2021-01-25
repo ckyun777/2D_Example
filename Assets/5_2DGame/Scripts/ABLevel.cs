@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 
 
+[CreateAssetMenu(fileName = "AB Level", menuName = "Scriptable Object/AB Level", order = int.MaxValue)]
 
-[CreateAssetMenu(fileName = "Zombie Data", menuName = "Scriptable Object/Zombie Data", order = int.MaxValue)]
-
-public class ZombieData : ScriptableObject
-
+public class ABLevel : ScriptableObject
 {
-
    [SerializeField]
 
-   private string zombieName;
+   private string levelName;
 
-   public string ZombieName { get { return zombieName; } }
+   public string LevelName { get { return levelName; } }
 
    [SerializeField]
 
@@ -37,5 +34,6 @@ public class ZombieData : ScriptableObject
    private float moveSpeed;
 
    public float MoveSpeed { get { return moveSpeed; } }
-
 }
+
+

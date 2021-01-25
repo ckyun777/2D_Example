@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90229251baa3a34ca0c3feeccf491b9, type: 3}
-  m_Name: Zombie Data 2
+  m_Script: {fileID: 11500000, guid: 9a79abc50aa42454c9fd34d85c9051ca, type: 3}
+  m_Name: AB Level1
   m_EditorClassIdentifier: 
-  zombieName: zombie 1
-  hp: 80
-  damage: 30
-  sightRange: 0
-  moveSpeed: 0
+  levelName: 1
+  hp: 1
+  damage: 1
+  sightRange: 1
+  moveSpeed: 1
