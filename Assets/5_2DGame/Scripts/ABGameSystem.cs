@@ -21,7 +21,20 @@ public class ABGameSystem : MonoBehaviour
          m_BGMSource.clip = m_LevelData.levels[m_CurrentLevel - 1].LevelBGM;
          m_BGMSource.loop = true;
          m_BGMSource.Play();
+
+         Invoke("DelayAction", 2); //this will happen after 2 seconds
    }
+
+   void DelayAction()
+	{
+      Block[] blocks = FindObjectsOfType<Block>();
+
+		foreach (var item in blocks)
+		{
+         item.m_GameStarted = true;
+		}
+	}
+
 
     // Update is called once per frame
     void Update()

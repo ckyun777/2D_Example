@@ -2,8 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BallType
+{
+   Normal,
+   Bomb,
+
+}
+
 public class Projectile : MonoBehaviour
 {
+   public BallType m_Type = BallType.Normal;
+   public int m_TouchCount = 0;
+   public GameObject m_SearchArea;
+   public GameObject m_BombEffect;
+
+
    Rigidbody2D rb;
    SpringJoint2D springJoint;
    bool isPressed = false;
@@ -23,20 +36,54 @@ public class Projectile : MonoBehaviour
 		{
          rb.position = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 		}
+
+      if(m_TouchCount == 1)
+		{
+         if(Input.GetMouseButtonDown(0))
+			{
+            switch (m_Type)
+            {
+               case BallType.Normal:
+
+                  break;
+               case BallType.Bomb:
+                  //
+                  print("Bomb");
+                  Instantiate(m_SearchArea, transform.position, Quaternion.identity); 
+                  Instantiate(m_BombEffect, transform.position, Quaternion.identity);
+                  Destroy(gameObject);
+                  break;
+
+               default:
+                  break;
+            }
+         }
+		}
     }
 
 	private void OnMouseDown()
 	{
-	   isPressed = true;
-      rb.isKinematic = true;
+      if (m_TouchCount == 0)
+		{
+         isPressed = true;
+         rb.isKinematic = true;
+      }
+      
+	   
 	}
 
 	private void OnMouseUp()
 	{
-      isPressed = false;
-      rb.isKinematic = false;
+      if (m_TouchCount == 0)
+      {
+         m_TouchCount++;
 
-      StartCoroutine(Release());
+         isPressed = false;
+         rb.isKinematic = false;
+
+         StartCoroutine(Release());
+      }
+      
    }
 
    IEnumerator Release()

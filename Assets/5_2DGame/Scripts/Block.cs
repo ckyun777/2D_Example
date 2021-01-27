@@ -6,6 +6,7 @@ public class Block : MonoBehaviour
 {
     // Start is called before the first frame update
 
+	public bool m_GameStarted = false;
    public string m_Type = "wood";
    public int m_Hp = 2;
 	public float m_DamageVal = 1f;
@@ -17,6 +18,8 @@ public class Block : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		if( !m_GameStarted ) return; 
+
 		print(collision.relativeVelocity.magnitude);
 
 		m_Audio.clip = m_Sound;
