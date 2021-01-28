@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: char2Ani_ball
+  m_Name: Mouse_Ball_Bomb_Ani
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,14 +22,11 @@ AnimationClip:
     - time: 0
       value: {fileID: -893135388828668697, guid: b745eb4176255044f8add08490f84561,
         type: 3}
-    - time: 0.2
+    - time: 0.41666666
       value: {fileID: -8743680168951180082, guid: b745eb4176255044f8add08490f84561,
         type: 3}
-    - time: 0.41666666
+    - time: 0.85
       value: {fileID: -1537314257797496262, guid: b745eb4176255044f8add08490f84561,
-        type: 3}
-    - time: 0.6333333
-      value: {fileID: -893135388828668697, guid: b745eb4176255044f8add08490f84561,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -53,13 +50,12 @@ AnimationClip:
     - {fileID: -893135388828668697, guid: b745eb4176255044f8add08490f84561, type: 3}
     - {fileID: -8743680168951180082, guid: b745eb4176255044f8add08490f84561, type: 3}
     - {fileID: -1537314257797496262, guid: b745eb4176255044f8add08490f84561, type: 3}
-    - {fileID: -893135388828668697, guid: b745eb4176255044f8add08490f84561, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.65
+    m_StopTime: 0.8666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

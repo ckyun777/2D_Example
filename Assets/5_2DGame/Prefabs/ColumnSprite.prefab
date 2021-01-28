@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1857008965366188462}
   - component: {fileID: 1857008965366188459}
   - component: {fileID: 4319998419994884207}
-  - component: {fileID: 1300485059}
-  m_Layer: 0
+  - component: {fileID: 1414645059}
+  m_Layer: 9
   m_Name: ColumnSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,13 +145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d2f77d99fa8354a950a7f7820a4338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameStarted: 0
   m_Type: wood
-  m_Hp: 5
+  m_Hp: 1
   m_DamageVal: 0.5
-  m_Audio: {fileID: 1300485059}
-  m_Sound: {fileID: 8300000, guid: 4e29ea46853e910488b74c28a37c05c6, type: 3}
+  m_Audio: {fileID: 1414645059}
+  m_Sound: {fileID: 8300000, guid: 4a85a32434f7e8242847ab8bc849deb4, type: 3}
   m_SoundBig: {fileID: 8300000, guid: bffd196b9d78b0b418f66f0889b9198d, type: 3}
---- !u!82 &1300485059
+--- !u!82 &1414645059
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +161,7 @@ AudioSource:
   m_GameObject: {fileID: 1857008965366188463}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4718406570192929118, guid: 4ee6aacb085010341adac29bbbdcbcdc,
+  OutputAudioMixerGroup: {fileID: 1107275465365374218, guid: 039643774e95bcd42a52226bf5c80def,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4e29ea46853e910488b74c28a37c05c6, type: 3}
   m_PlayOnAwake: 0

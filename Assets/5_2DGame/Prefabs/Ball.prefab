@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8104831178966358545}
   - component: {fileID: 8104831178966358550}
   m_Layer: 0
-  m_Name: New_Piskel_clone_3_0_ball
+  m_Name: Normal_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -893135388828668697, guid: b745eb4176255044f8add08490f84561,
-    type: 3}
+  m_Sprite: {fileID: 331606267875462273, guid: 1e5dd7f39c31d5044b96311bdaef9b4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 8104831178966358548}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4bb0a6e3a9e54c446a676ca22d5c4293, type: 2}
+  m_Controller: {fileID: 9100000, guid: 82710738affb7e04ea63e130b3bacb14, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -191,7 +190,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.04067087, y: 0.7372296}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.085142426
+  m_Distance: 4.747566
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &8104831179768864462
@@ -206,3 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13327a15806f6f24f8df8d517c3954ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Type: 0
+  m_TouchCount: 0
+  m_SearchArea: {fileID: 0}
+  m_BombEffect: {fileID: 0}

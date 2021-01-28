@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BallType
-{
-   Normal,
-   Bomb,
-
-}
 
 public class Projectile : MonoBehaviour
 {
@@ -21,6 +15,9 @@ public class Projectile : MonoBehaviour
    SpringJoint2D springJoint;
    bool isPressed = false;
 
+   public delegate void DeactiveFunc();
+   public event DeactiveFunc m_DeactiveFunc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +26,31 @@ public class Projectile : MonoBehaviour
 
     }
 
+   public void Shoot()
+	{
+      if(m_Type == BallType.Normal)
+         Invoke("DeActiveBall", 5f);
+	}
+
+   void DeActiveBall()
+	{
+      print("DeActive");
+      m_DeactiveFunc();
+
+		foreach (var item in m_DeactiveFunc.GetInvocationList())
+		{
+         m_DeactiveFunc -= (DeactiveFunc)item;
+		}
+      this.enabled = false;
+
+
+	}
+
     // Update is called once per frame
     void Update()
     {
+      if(this.enabled == false) return;
+
       if(isPressed)
 		{
          rb.position = Camera.main.ScreenToWorldPoint( Input.mousePosition );
@@ -51,6 +70,9 @@ public class Projectile : MonoBehaviour
                   print("Bomb");
                   Instantiate(m_SearchArea, transform.position, Quaternion.identity); 
                   Instantiate(m_BombEffect, transform.position, Quaternion.identity);
+
+                  DeActiveBall();
+
                   Destroy(gameObject);
                   break;
 
@@ -81,6 +103,7 @@ public class Projectile : MonoBehaviour
          isPressed = false;
          rb.isKinematic = false;
 
+         Shoot();
          StartCoroutine(Release());
       }
       

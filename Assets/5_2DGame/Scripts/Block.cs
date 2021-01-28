@@ -20,7 +20,7 @@ public class Block : MonoBehaviour
 	{
 		if( !m_GameStarted ) return; 
 
-		print(collision.relativeVelocity.magnitude);
+		//print(collision.relativeVelocity.magnitude);
 
 		m_Audio.clip = m_Sound;
 
@@ -37,7 +37,8 @@ public class Block : MonoBehaviour
 
 		}
 
-		m_Audio.Play();
+		if(m_Audio != null && m_Audio.clip != null)
+			m_Audio.Play();
 
 	}
 }
