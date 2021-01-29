@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
    public GameObject m_SearchArea;
    public GameObject m_BombEffect;
 
-
    Rigidbody2D rb;
    SpringJoint2D springJoint;
    bool isPressed = false;
@@ -28,9 +27,31 @@ public class Projectile : MonoBehaviour
 
    public void Shoot()
 	{
-      if(m_Type == BallType.Normal)
-         Invoke("DeActiveBall", 5f);
+      
+		switch (m_Type)
+		{
+			case BallType.Normal:
+            Invoke("DeActiveBall", 5f);
+            break;
+			case BallType.Bomb:
+            Invoke("BombAction", 6f);
+            break;
+			default:
+				break;
+		}
+
 	}
+
+   void BombAction()
+	{
+      print("Bomb");
+      Instantiate(m_SearchArea, transform.position, Quaternion.identity);
+      Instantiate(m_BombEffect, transform.position, Quaternion.identity);
+
+      DeActiveBall();
+
+      Destroy(gameObject);
+   }
 
    void DeActiveBall()
 	{
@@ -66,14 +87,7 @@ public class Projectile : MonoBehaviour
 
                   break;
                case BallType.Bomb:
-                  //
-                  print("Bomb");
-                  Instantiate(m_SearchArea, transform.position, Quaternion.identity); 
-                  Instantiate(m_BombEffect, transform.position, Quaternion.identity);
-
-                  DeActiveBall();
-
-                  Destroy(gameObject);
+                  BombAction();
                   break;
 
                default:

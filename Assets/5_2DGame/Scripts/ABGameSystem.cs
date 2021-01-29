@@ -14,7 +14,7 @@ public enum ABGameState
    Title,
    Menu,
    BeforeStart,
-   ReLoadPlayer,
+   //ReLoadPlayer,
    Start,
    ReStart,
    StageEnd,
@@ -25,11 +25,18 @@ public class ABGameSystem : MonoBehaviour
    public ABGameState m_State = ABGameState.Title;
 
 
-   public int m_CurrentLevel = 1;
-
+   public int m_CurLevelNum = 1;
    public ABLevelData m_LevelData;
-
    public Text m_LevelText;
+   public GameObject[] m_LevelPrefabs;
+   public GameObject m_CurLevel;
+
+   public GameObject[] m_LevelObjects;
+
+
+   public float m_TimeCount = 0;
+   public float m_TimeLimit = 10f;
+   public Text m_TimeText;
 
    public AudioSource m_BGMSource;
 
@@ -39,11 +46,31 @@ public class ABGameSystem : MonoBehaviour
 
    public GameObject m_Title;
    public GameObject m_Menu;
-   public GameObject[] m_StageGOs;
-
+   
    private void Start()
 	{
-		Title();
+		switch (m_State)
+		{
+			case ABGameState.Title:
+            Title();
+            break;
+			case ABGameState.Menu:
+            Menu();
+            break;
+			case ABGameState.BeforeStart:
+            BeforeStart();
+				break;
+			//case ABGameState.ReLoadPlayer:
+			//	break;
+			case ABGameState.Start:
+				break;
+			case ABGameState.ReStart:
+				break;
+			case ABGameState.StageEnd:
+				break;
+			default:
+				break;
+		}
 
 	}
 
@@ -56,9 +83,11 @@ public class ABGameSystem : MonoBehaviour
 
    public void Menu()
 	{
+      m_State = ABGameState.Menu;
+
       m_Title.SetActive(false);
       m_Menu.SetActive(true);
-
+      m_TimeCount = 0f;
    }
 
     // Start is called before the first frame update
@@ -66,17 +95,21 @@ public class ABGameSystem : MonoBehaviour
     {
       m_Menu.SetActive(false);
 
-		foreach (var item in m_StageGOs)
+		foreach (var item in m_LevelObjects)
 		{
-         item.SetActive(true);
+			item.SetActive(true);
 		}
 
-      m_LevelText.text = m_LevelData.levels[m_CurrentLevel - 1].LevelName;
+		m_CurLevel = Instantiate(m_LevelPrefabs[m_CurLevelNum - 1]);
 
-         m_BGMSource.clip = m_LevelData.levels[m_CurrentLevel - 1].LevelBGM;
+
+      m_LevelText.text = m_LevelData.levels[m_CurLevelNum - 1].LevelName;
+
+         m_BGMSource.clip = m_LevelData.levels[m_CurLevelNum - 1].LevelBGM;
          m_BGMSource.loop = true;
          m_BGMSource.Play();
 
+         m_State = ABGameState.Start;
          Invoke("DelayAction", 2); //this will happen after 2 seconds
    }
 
@@ -89,7 +122,7 @@ public class ABGameSystem : MonoBehaviour
          item.m_GameStarted = true;
 		}
 
-      m_State = ABGameState.ReLoadPlayer;
+      //m_State = ABGameState.ReLoadPlayer;
       ResetBall();
 	}
 
@@ -119,18 +152,41 @@ public class ABGameSystem : MonoBehaviour
 
    void ResetBall()
 	{
-      m_State = ABGameState.ReLoadPlayer;
-
-      if (m_State == ABGameState.ReLoadPlayer)
+      
+      if (m_State == ABGameState.Start)
       {
          CreatePlayer();
          m_State = ABGameState.Start;
       }
    }
 
+   public void StageEnd()
+	{
+      m_State = ABGameState.StageEnd;
+      m_TimeText.text = "Stage Over";
+
+      foreach (var item in m_LevelObjects)
+      {
+         item.SetActive(false);
+      }
+
+      Destroy( m_CurLevel );
+      
+      Menu();
+   }
+
     // Update is called once per frame
     void Update()
     {
-      
+      if(m_State == ABGameState.Start)
+		{
+         m_TimeCount += Time.deltaTime;
+         m_TimeText.text = m_TimeCount.ToString("000.00");
+
+         if (m_TimeCount > m_TimeLimit)
+			{
+            StageEnd();
+			}
+		}
     }
 }
